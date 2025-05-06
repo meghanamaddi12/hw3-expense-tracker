@@ -5,12 +5,19 @@ import view.ExpenseTrackerView;
 import model.Filter.AmountFilter;
 import model.Filter.CategoryFilter;
 
+/**
+ * Entry point for the Expense Tracker application.
+ * Sets up the MVC components, attaches event listeners, and launches the GUI.
+ */
 public class ExpenseTrackerApp {
 
-  /**
-   * @param args
-   */
-  public static void main(String[] args) {
+    /**
+     * The main method initializes the model, view, and controller,
+     * sets up event listeners for UI actions, and starts the application.
+     *
+     * @param args command-line arguments (not used)
+     */
+    public static void main(String[] args) {
     
     // Create MVC components
     ExpenseTrackerModel model = new ExpenseTrackerModel();
@@ -38,7 +45,12 @@ public class ExpenseTrackerApp {
       }
     });
 
-      // Add action listener to the "Apply Category Filter" button
+        // Add action listener to the "Undo Last Transaction" button
+        view.addUndoTransactionListener(e -> {
+            controller.removeLastTransaction();
+        });
+
+        // Add action listener to the "Apply Category Filter" button
     view.addApplyCategoryFilterListener(e -> {
       try{
       String categoryFilterInput = view.getCategoryFilterInput();
