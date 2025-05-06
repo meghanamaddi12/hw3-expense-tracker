@@ -210,4 +210,27 @@ public class TestExample {
 	    assertEquals(categoryToFilterBy, currDisplayedTransaction.getCategory());
 	}
     }
+    @Test
+    public void testRemoveNonExistentTransaction() {
+        // Setup
+        double amount = 100.0;
+        String category = CATEGORY_ENTERTAINMENT;
+        Transaction notInModel = new Transaction(amount, category);
+        System.out.println("Setup: Created a transaction not in model -> Amount: " + amount + ", Category: " + category);
+
+        // Pre-condition checks
+        assertEquals(0, model.getTransactions().size());
+        assertEquals(0.00, getTotalCost(), 0.01);
+        System.out.println("Pre-condition: Model is empty with 0 transactions and total cost 0.00");
+
+        // Call unit under test
+        model.removeTransaction(notInModel);
+        System.out.println("Action: Attempted to remove a transaction that was never added to the model");
+
+        // Post-condition checks
+        assertEquals(0, model.getTransactions().size());
+        assertEquals(0.00, getTotalCost(), 0.01);
+        System.out.println("Post-condition: Model remains unchanged, still 0 transactions and total cost 0.00");
+    }
+
 }
