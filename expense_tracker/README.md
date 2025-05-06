@@ -38,6 +38,12 @@ This project is an extension of the previous Homework 2 "Expense Tracker" applic
     - Each transaction appears on a new line
 - Designed using the **Open-Closed Principle** with no magic strings.
 
+### Debuggability
+
+- Implemented IDE-based debugging using breakpoints.
+- Inspected variable states before and after undo using IntelliJ's debugger.
+- Captured and submitted screenshots showing changes in model variables (`transactions`, `undoStack`) to reflect correct program state transitions.
+
 ##  Design Principles & Patterns
 
 - **Model-View-Controller (MVC)**: Clean separation of model, view, and controller logic.
