@@ -1,3 +1,5 @@
+9f00935 | meghanamaddi12 | 2025-05-06 | Enhance Undo button to allow only last transaction removal with validation
+6214c15 | meghanamaddi12 | 2025-05-06 | docs: Add full git log with author, date, and commit messages
 ac56039 | meghanamaddi12 | 2025-05-06 | docs: Update README with HW3 enhancements and debugging details
 32fab5e | meghanamaddi12 | 2025-05-06 | docs: Add generated Javadoc documentation for all modules
 ef87b93 | meghanamaddi12 | 2025-05-06 | debug: Add breakpoint and debugger inspection for undo functionality
