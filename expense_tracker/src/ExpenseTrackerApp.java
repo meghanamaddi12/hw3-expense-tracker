@@ -47,23 +47,29 @@ public class ExpenseTrackerApp {
 
         // Add action listener to the "Undo Last Transaction" button
         view.addUndoTransactionListener(e -> {
-            controller.removeLastTransaction();
-        });
+            int selectedRow = view.getTransactionsTable().getSelectedRow();
+            int rowCount = view.getTransactionsTable().getRowCount();
 
+            // If the selected row is the last row (Total row), show popup
+            if (selectedRow == rowCount - 1) {
+                JOptionPane.showMessageDialog(view, "You cannot undo the total row. Please select a valid transaction.");
+            } else {
+                controller.removeLastTransaction();
+            }
+        });
         // Add action listener to the "Apply Category Filter" button
-    view.addApplyCategoryFilterListener(e -> {
-      try{
-      String categoryFilterInput = view.getCategoryFilterInput();
-      CategoryFilter categoryFilter = new CategoryFilter(categoryFilterInput);
-      if (categoryFilterInput != null) {
-          // controller.applyCategoryFilter(categoryFilterInput);
-          controller.setFilter(categoryFilter);
-          controller.applyFilter();
-      }
-     }catch(IllegalArgumentException exception) {
-    JOptionPane.showMessageDialog(view, exception.getMessage());
-    view.toFront();
-   }});
+        view.addUndoTransactionListener(e -> {
+            int selectedRow = view.getTransactionsTable().getSelectedRow();
+            int rowCount = view.getTransactionsTable().getRowCount();
+
+            int expectedLastTransactionRow = rowCount - 2;
+
+            if (selectedRow != expectedLastTransactionRow) {
+                JOptionPane.showMessageDialog(view, "Please select the most recent transaction to undo.");
+            } else {
+                controller.removeLastTransaction();
+            }
+        });
 
 
     // Add action listener to the "Apply Amount Filter" button
